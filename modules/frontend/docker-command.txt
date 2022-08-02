@@ -1,0 +1,5 @@
+// To build 
+docker build -t fadyrefaat/cn-nd-udaconnect-app .
+
+// To push 
+docker push fadyrefaat/cn-nd-udaconnect-app
