@@ -1,0 +1,13 @@
+First for REST
+    The REST API has multiple advantages making interface restrictions on the data send by it ,
+    easy to use, widely adopted, it can use JSON , XML or even text.
+    And here a great article to use REST API https://www.integrate.io/blog/why-you-need-a-rest-api/
+
+second for grpc
+    Without a middle proxy between mobile devices and the backend service,gRPC can integrate nicely with mobile devices.
+    gRPC is more structured,grpc uses Protocol buffers so that can integrate two microservice each one has its own programming language.
+
+Third for Kafka
+    Kafka is a message queue that makes the application more reliable cause Kafka can handle massive events 
+    without any waiting (Asynchronous).
+    for our use case we need it to handle the recorded locations that will be relatively a lot of data with high-frequency requests. 
