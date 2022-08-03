@@ -19,20 +19,20 @@ kind: Deployment
 metadata:
   labels:
     service: person-api
-  name: person-api
+  name: person-depl-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: person-api
+      service: person-svc-api
   template:
     metadata:
       labels:
-        service: person-api
+        service: person-svc-api
     spec:
       containers:
       - image: fadyrefaat/cn-nd-person-api:latest
-        name: person-api
+        name: person-microservice-api
         imagePullPolicy: Always
         env:
         - name: DB_USERNAME
