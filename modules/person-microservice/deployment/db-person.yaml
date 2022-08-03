@@ -4,7 +4,7 @@ metadata:
   name: db-volume-person
   labels:
     type: local
-    app: db-person
+    app: postgres-person
 spec:
   storageClassName: manual
   capacity:
@@ -19,7 +19,7 @@ apiVersion: v1
 metadata:
   name: postgres-pvc-person
   labels:
-    app: db-person
+    app: postgres-person
 spec:
   storageClassName: manual
   accessModes:
@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: postgres-container-person
-          image: library/postgres:latest
+          image: postgis/postgis:12-2.5-alpine
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
