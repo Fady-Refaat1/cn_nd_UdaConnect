@@ -4,7 +4,7 @@ metadata:
   name: db-volume-person
   labels:
     type: local
-    app: postgres-person
+    app: postgres_person
 spec:
   storageClassName: manual
   capacity:
@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/data/db-person"
+    path: "/mnt/data"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
