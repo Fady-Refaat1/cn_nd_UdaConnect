@@ -1,15 +1,10 @@
-# Workflow to ensure whenever a Github PR is submitted, 
-# a JIRA ticket gets created automatically. 
-name: Manual Workflow
+name: UdaConnect - Package with Docker
 
 # Controls when the action will run. 
 on:
-  # Triggers the workflow on pull request events but only for the master branch
-  pull_request_target:
-    types: [assigned, opened, reopened]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   docker:
@@ -38,3 +33,11 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: fadyrefaat/cn-nd-person-api:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: modules/connection-microservice
+          platforms: linux/amd64
+          push: true
+          tags: fadyrefaat/cn-nd-connection-api:latest

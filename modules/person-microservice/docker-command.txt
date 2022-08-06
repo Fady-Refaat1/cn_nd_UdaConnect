@@ -3,3 +3,14 @@ docker build -t fadyrefaat/cn-nd-person-api .
 
 // To push 
 docker push fadyrefaat/cn-nd-person-api
+
+
+
+// how to seed data in database 
+kubectl exec -it pod_name(db) -- bash
+touch init_person_db.sql
+vi init_person_db.sql
+  creat person
+  insert data 
+
+psql -U ct_admin -d DB_NAME -f init_person_db.sql
