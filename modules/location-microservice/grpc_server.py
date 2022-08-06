@@ -1,5 +1,4 @@
 import json
-import os
 import time
 from concurrent import futures
 from kafka import KafkaProducer
@@ -7,9 +6,6 @@ import grpc
 import location_pb2
 import location_pb2_grpc
 
-
-# KAFKA_SERVER = os.environ["KAFKA_SERVER"]
-# KAFKA_TOPIC = os.environ["KAFKA_TOPIC"]
 
 producer = KafkaProducer(bootstrap_servers="kafka-server:9092")
 
