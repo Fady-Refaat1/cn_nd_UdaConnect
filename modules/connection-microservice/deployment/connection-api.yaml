@@ -19,20 +19,20 @@ kind: Deployment
 metadata:
   labels:
     service: connection-api
-  name: connection-api
+  name: connection-depl-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: connection-api
+      service: connection-svc-api
   template:
     metadata:
       labels:
-        service: connection-api
+        service: connection-svc-api
     spec:
       containers:
       - image: fadyrefaat/cn-nd-connection-api:latest
-        name: connection-api
+        name: connection-microservice-api
         imagePullPolicy: Always
         env:
         - name: DB_USERNAME
