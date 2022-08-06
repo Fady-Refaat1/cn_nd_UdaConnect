@@ -1,10 +1,10 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: db-volume-connection
+  name: connections-postgres-volume
   labels:
     type: local
-    app: db-connection
+    app: connection-postgres
 spec:
   storageClassName: manual
   capacity:
@@ -12,14 +12,14 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/data/db-connection"
+    path: "/mnt/data/connectiondb"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pvc-connection
+  name: postgres-connection-pv-claim
   labels:
-    app: db-person
+    app: connection-postgres
 spec:
   storageClassName: manual
   accessModes:
@@ -31,33 +31,33 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-srv-connection
+  name: connection-postgres
   labels:
-    app: db-connection
+    app: connection-postgres
 spec:
   type: NodePort
   selector:
-    app: db-connection
+    app: connection-postgres
   ports:
    - port: 5432
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-dep-connection
+  name: connection-postgres
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: db-connection
+      app: connection-postgres
   template:
     metadata:
       labels:
-        app: db-connection
+        app: connection-postgres
     spec:
       containers:
-        - name: postgres-container-person
-          image: library/postgres:latest
+        - name: connection-postgres
+          image: postgis/postgis:12-2.5-alpine
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
@@ -78,9 +78,9 @@ spec:
                 name: db-connection
                 key: DB_NAME
           volumeMounts:
-            - mountPath: /var/lib/db-connection/data
-              name: db-connection
+            - mountPath: /var/lib/connection-postgresql/data
+              name: connection-postgresdb
       volumes:
-        - name: db-connection
+        - name: connection-postgresdb
           persistentVolumeClaim:
-            claimName: postgres-pvc-connection
+            claimName: postgres-connection-pv-claim
