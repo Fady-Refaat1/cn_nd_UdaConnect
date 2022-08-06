@@ -3,3 +3,12 @@ docker build -t fadyrefaat/cn-nd-connection-api .
 
 // To push 
 docker push fadyrefaat/cn-nd-connection-api
+
+
+//seed data 
+ kubectl exec -it <pod_NAMEs>  -- bash
+
+ touch init_connection_db.sql
+ vi init_connection_db.sql
+
+ psql -U ct_admin -d connection -f init_connection_db.sql

@@ -46,7 +46,7 @@ kind: Deployment
 metadata:
   name: connection-postgres
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: connection-postgres
