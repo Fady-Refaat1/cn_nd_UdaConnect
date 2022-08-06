@@ -5,7 +5,7 @@ from typing import Dict, List
 import requests
 from app.config import PERSON_SERVICE_ENDPOINT
 from app import db
-from app.udaconnect.models import Connection, Location, Person
+from app.udaconnect_connection.models import Connection, Location, Person
 from sqlalchemy.sql import text
 
 logging.basicConfig(level=logging.WARNING)
