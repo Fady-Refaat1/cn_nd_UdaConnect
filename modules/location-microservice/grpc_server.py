@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from concurrent import futures
 from kafka import KafkaProducer
@@ -6,8 +7,11 @@ import grpc
 import location_pb2
 import location_pb2_grpc
 
+KAFKA_URL= os.environ["KAFKA_URL"]
+TOPIC_NAME = os.environ["KAFKA_TOPIC"]
 
-producer = KafkaProducer(bootstrap_servers="kafka-server:9092")
+producer = KafkaProducer(bootstrap_servers=KAFKA_URL)
+
 
 class LocationServicer(location_pb2_grpc.LocationServiceServicer):
     def Create(self, request, context):
@@ -18,7 +22,7 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
             "longitude" : int(request.longitude)
         }
         location_encode_data = json.dumps(request_value, indent=2).encode('utf-8')
-        producer.send("location", location_encode_data)
+        producer.send(TOPIC_NAME, location_encode_data)
         producer.flush()
         return location_pb2.LocationMessage(**request_value)
 

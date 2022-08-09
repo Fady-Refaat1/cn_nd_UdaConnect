@@ -14,9 +14,9 @@ stub = location_pb2_grpc.LocationServiceStub(channel)
 
 # Update this with desired payload
 location = location_pb2.LocationMessage(
-    userId = 6,
-    latitude = 100,
-    longitude = 20
+    userId = 16,
+    latitude = 100000,
+    longitude = 200000
 )
 
 

@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: location-svc-api
+  name: location-svc-api
+spec:
+  ports:
+  - name: "5005"
+    port: 5005
+    targetPort: 5005
+    nodePort: 30002
+  selector:
+    service: location-svc-api
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: location-api
+  name: location-depl-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: location-svc-api
+  template:
+    metadata:
+      labels:
+        service: location-svc-api
+    spec:
+      containers:
+      - image: fadyrefaat/cn-nd-location-api:latest
+        name: location-microservice-api
+        imagePullPolicy: Always

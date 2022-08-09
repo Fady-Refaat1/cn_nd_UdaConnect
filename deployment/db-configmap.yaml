@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  DB_USERNAME: "ct_admin"
+  CONNECTION_DB_NAME: "connection"
+  CONNECTION_DB_HOST: "connection-postgres"
+  PERSON_DB_NAME: "person"
+  PERSON_DB_HOST: "person-postgres"
+  DB_PORT: "5432"
+  PERSON_SERVICE_ENDPOINT: "http://person-svc-api:5000/"
+  KAFKA_TOPIC: "location"
+metadata:
+  name: db-env
+

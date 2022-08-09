@@ -3,9 +3,9 @@ from typing import List, Type
 
 DB_USERNAME = os.environ["DB_USERNAME"]
 DB_PASSWORD = os.environ["DB_PASSWORD"]
-DB_HOST = os.environ["DB_HOST"]
+DB_HOST = os.environ["CONNECTION_DB_HOST"]
+DB_NAME = os.environ["CONNECTION_DB_NAME"]
 DB_PORT = os.environ["DB_PORT"]
-DB_NAME = os.environ["DB_NAME"]
 PERSON_SERVICE_ENDPOINT = os.environ["PERSON_SERVICE_ENDPOINT"]
 
 

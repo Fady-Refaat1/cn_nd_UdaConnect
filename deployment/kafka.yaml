@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
         - name: zookeeper
-          image: bitnami/zookeeper:3.7
+          image: bitnami/zookeeper:latest
           imagePullPolicy: "Always"
           ports:
             - containerPort: 2181
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
         - name: kafka-server
-          image: bitnami/kafka:2
+          image: bitnami/kafka:latest
           imagePullPolicy: "Always"
           ports:
             - containerPort: 9092
