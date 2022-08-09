@@ -9,5 +9,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 COPY . .
-COPY location-consumer.py location-consumer.py
-CMD ["/bin/sh", "./script.sh"]
+CMD ["flask", "run", "--host", "0.0.0.0", ";","python","location-consumer.py"]
