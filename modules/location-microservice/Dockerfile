@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5005
 
 COPY . .
-CMD ["/bin/sh", "./script.sh"]
+CMD ["python", "grpc_server.py"]
