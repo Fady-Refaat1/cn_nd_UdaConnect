@@ -1,0 +1,20 @@
+To make a simple grpc call 
+1- create Grpc server like `server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))`
+2- add services to the server `location_pb2_grpc.add_LocationServiceServicer_to_server(LocationServicer(), server)`
+3- now after setup the server you should create channel and 
+
+`
+channel = grpc.insecure_channel("location-svc-api:5005") #channel with the listener 
+stub = location_pb2_grpc.LocationServiceStub(channel)
+
+# the request payload
+location = location_pb2.LocationMessage(
+    userId = 16,
+    latitude = 100000,
+    longitude = 200000
+)
+
+
+stub.Create(location) # call the service 
+
+`

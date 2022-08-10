@@ -34,3 +34,15 @@ spec:
       - image: fadyrefaat/cn-nd-location-api:latest
         name: location-microservice-api
         imagePullPolicy: Always
+        env:
+        - name: KAFKA_URL
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: KAFKA_URL
+        - name: KAFKA_TOPIC
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: KAFKA_TOPIC
+      restartPolicy: Always

@@ -3,8 +3,8 @@ from typing import List, Type
 
 DB_USERNAME = os.environ["DB_USERNAME"]
 DB_PASSWORD = os.environ["DB_PASSWORD"]
-DB_HOST = os.environ["PERSON_DB_HOST"]
-DB_NAME = os.environ["PERSON_DB_NAME"]
+DB_HOST = os.environ["DB_HOST"]
+DB_NAME = os.environ["DB_NAME"]
 DB_PORT = os.environ["DB_PORT"]
 
 

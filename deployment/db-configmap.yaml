@@ -8,6 +8,7 @@ data:
   PERSON_DB_HOST: "person-postgres"
   DB_PORT: "5432"
   PERSON_SERVICE_ENDPOINT: "http://person-svc-api:5000/"
+  KAFKA_URL: "kafka-0.kafka-headless.default.svc.cluster.local:9092"
   KAFKA_TOPIC: "location"
 metadata:
   name: db-env
