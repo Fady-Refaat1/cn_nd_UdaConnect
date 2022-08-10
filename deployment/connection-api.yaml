@@ -38,7 +38,7 @@ spec:
         - name: DB_USERNAME
           valueFrom:
             configMapKeyRef:
-              name: db-env
+              name: db-connection
               key: DB_USERNAME
         - name: DB_PASSWORD
           valueFrom:
@@ -48,31 +48,31 @@ spec:
         - name: DB_NAME
           valueFrom:
             configMapKeyRef:
-              name: db-env
-              key: CONNECTION_DB_NAME
+              name: db-connection
+              key: DB_NAME
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: db-env
-              key: CONNECTION_DB_HOST
+              name: db-connection
+              key: DB_HOST
         - name: DB_PORT
           valueFrom:
             configMapKeyRef:
-              name: db-env
+              name: db-connection
               key: DB_PORT
         - name: PERSON_SERVICE_ENDPOINT
           valueFrom:
             configMapKeyRef:
-              name: db-env
+              name: db-connection
               key: PERSON_SERVICE_ENDPOINT
         - name: KAFKA_URL
           valueFrom:
             configMapKeyRef:
-              name: db-env
+              name: db-connection
               key: KAFKA_URL
         - name: KAFKA_TOPIC
           valueFrom:
             configMapKeyRef:
-              name: db-env
+              name: db-connection
               key: KAFKA_TOPIC
       restartPolicy: Always
