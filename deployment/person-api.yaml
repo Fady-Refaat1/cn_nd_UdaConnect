@@ -45,12 +45,12 @@ spec:
             secretKeyRef:
               name: db-env
               key: DB_PASSWORD
-        - name: PERSON_DB_NAME
+        - name: DB_NAME
           valueFrom:
             configMapKeyRef:
               name: db-env
               key: PERSON_DB_NAME
-        - name: PERSON_DB_HOST
+        - name: DB_HOST
           valueFrom:
             configMapKeyRef:
               name: db-env
