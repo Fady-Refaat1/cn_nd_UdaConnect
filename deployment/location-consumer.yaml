@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: location-consumer-srv
+  name: location-consumer-srv
+spec:
+  selector:
+    service: location-consumer-srv
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: location-consumer-srv
+  name: location-consumer-srv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: location-consumer-srv
+  template:
+    metadata:
+      labels:
+        service: location-consumer-srv
+    spec:
+      containers:
+      - image: fadyrefaat/cn-nd-location-consumer:latest
+        name: location-consumer-srv
+        imagePullPolicy: Always
+        env:
+        - name: KAFKA_TOPIC
+          valueFrom:
+            configMapKeyRef:
+              name: db-connection
+              key: KAFKA_TOPIC        
+      restartPolicy: Always
